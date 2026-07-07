@@ -1,0 +1,708 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-title: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Premium HSL Color Tokens (Deep Dark Carbon Palette) */
+  --bg-main: hsl(224, 25%, 8%);
+  --bg-surface: hsl(222, 22%, 12%);
+  --bg-card: hsla(223, 20%, 15%, 0.7);
+  --border-light: hsla(223, 20%, 30%, 0.3);
+  --border-hover: hsla(223, 20%, 45%, 0.5);
+  
+  --text-primary: hsl(0, 0%, 96%);
+  --text-secondary: hsl(220, 15%, 70%);
+  --text-muted: hsl(220, 10%, 50%);
+
+  /* Accent Colors */
+  --primary: hsl(188, 90%, 48%);       /* Neon Cyan */
+  --primary-hover: hsl(188, 100%, 43%);
+  --primary-glow: hsla(188, 90%, 48%, 0.2);
+
+  --secondary: hsl(265, 85%, 60%);     /* Electric Purple (Delivery Stops) */
+  --secondary-glow: hsla(265, 85%, 60%, 0.25);
+  
+  --accent-gold: hsl(45, 95%, 55%);     /* Warm Depot Gold */
+  --accent-gold-glow: hsla(45, 95%, 55%, 0.25);
+
+  /* Traffic Cost Colors */
+  --traffic-clear: hsl(145, 75%, 45%);    /* Clear Green */
+  --traffic-medium: hsl(38, 95%, 55%);    /* Warning Orange */
+  --traffic-heavy: hsl(4, 85%, 55%);      /* Heavy Red */
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px var(--primary-glow);
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: var(--radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Premium Dashboard Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 1.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-icon {
+  color: var(--primary);
+  filter: drop-shadow(0 0 8px var(--primary-glow));
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panels & Glassmorphism */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--border-hover);
+}
+
+.panel-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.75rem;
+  color: var(--text-primary);
+}
+
+/* Control Fields & Forms */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+select, input[type="text"], input[type="range"] {
+  background: hsl(223, 20%, 10%);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+select:focus, input[type="text"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+/* Custom Segmented Radio Controls */
+.segmented-control {
+  display: flex;
+  background: hsl(223, 20%, 10%);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem;
+  gap: 0.25rem;
+}
+
+.segmented-option {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  border-radius: calc(var(--radius-sm) - 4px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.segmented-option.active {
+  background: var(--primary);
+  color: var(--bg-main);
+  font-weight: 600;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Mode Indicators / Grid Legend */
+.legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.legend-color {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
+}
+
+/* Map Canvas Container */
+.map-viewport {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: hsl(223, 20%, 7%);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  min-height: 500px;
+  overflow: auto;
+}
+
+.canvas-container {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+}
+
+canvas {
+  display: block;
+  image-rendering: pixelated;
+  cursor: crosshair;
+}
+
+/* Floating HUD control on map */
+.map-hud {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  background: hsla(222, 22%, 12%, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-light);
+  z-index: 10;
+}
+
+.hud-btn {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.hud-btn:hover {
+  background: var(--border-light);
+  color: var(--primary);
+}
+
+.hud-btn.active {
+  background: var(--primary-glow);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+/* Action Buttons */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--bg-main);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:disabled {
+  background: var(--border-light);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: hsl(223, 20%, 15%);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+}
+
+.btn-secondary:hover {
+  background: hsl(223, 20%, 20%);
+  border-color: var(--border-hover);
+}
+
+.btn-danger {
+  background: hsla(4, 85%, 55%, 0.15);
+  color: hsl(4, 95%, 65%);
+  border: 1px solid hsla(4, 85%, 55%, 0.3);
+}
+
+.btn-danger:hover {
+  background: hsla(4, 85%, 55%, 0.25);
+  border-color: hsl(4, 85%, 55%);
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Metrics and Results Panel */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.metric-card {
+  background: hsl(223, 20%, 10%);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: var(--font-title);
+  color: var(--primary);
+}
+
+.metric-unit {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-left: 0.25rem;
+}
+
+/* Detailed Comparison Table */
+.comparison-table-wrapper {
+  overflow-x: auto;
+  margin-top: 1.25rem;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.comparison-table th, .comparison-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.comparison-table th {
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  background: hsl(223, 20%, 10%);
+}
+
+.comparison-table tr:hover td {
+  background: hsla(188, 90%, 48%, 0.03);
+}
+
+.comparison-table tr.highlight td {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Hour Congestion Slider HUD styling */
+.hour-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: var(--font-title);
+  margin-bottom: 0.25rem;
+}
+
+.hour-badge {
+  background: var(--primary-glow);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.traffic-status-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* File Upload input button */
+.file-upload-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-upload-input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+/* Tooltip & Instructions overlay */
+.instructions-overlay {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: hsla(265, 85%, 60%, 0.05);
+  border: 1px dashed var(--secondary);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.instructions-overlay strong {
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   NEW GRAPHICS & MARKERS OVERLAY
+   ========================================================================== */
+
+/* Relative container to hold canvas and absolute marker elements */
+.map-container-relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Absolute Markers positioned overlaying the grid map canvas */
+.map-marker-absolute {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Marker Bouncing animation for entries */
+.marker-bounce {
+  animation: markerBounce 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.map-marker-absolute:hover {
+  transform: translate(-50%, -50%) scale(1.25);
+  z-index: 30;
+}
+
+/* Depot specific styling */
+.depot-marker-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: hsl(45, 100%, 50%);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2px solid #0f172a;
+  box-shadow: 0 4px 10px hsla(45, 100%, 50%, 0.4);
+}
+
+.depot-marker-pin svg {
+  transform: rotate(45deg);
+  color: #0f172a;
+}
+
+/* Delivery specific styling */
+.delivery-marker-pin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--secondary);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  border: 2.5px solid #f8fafc;
+  box-shadow: 0 4px 8px rgba(155, 93, 229, 0.4);
+}
+
+.delivery-marker-text {
+  position: absolute;
+  transform: rotate(45deg);
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 0.75rem;
+  color: #ffffff;
+  pointer-events: none;
+}
+
+/* Tooltips for markers */
+.marker-tooltip {
+  position: absolute;
+  bottom: 125%;
+  background: #0f172a;
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  font-weight: 500;
+}
+
+.map-marker-absolute:hover .marker-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bouncing keyframe */
+@keyframes markerBounce {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -40%) scale(1.1);
+  }
+  70% {
+    transform: translate(-50%, -55%) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Heuristics Bar Chart CSS styling */
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-light);
+}
+
+.chart-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.chart-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.chart-bar-bg {
+  height: 20px;
+  background: hsl(223, 20%, 8%);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  position: relative;
+}
+
+.chart-bar-fill {
+  height: 100%;
+  border-radius: 9px;
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+  transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.75rem;
+}
+
+.chart-bar-fill.winner {
+  background: linear-gradient(90deg, var(--primary) 0%, hsl(145, 75%, 45%) 100%);
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+.chart-bar-value {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
