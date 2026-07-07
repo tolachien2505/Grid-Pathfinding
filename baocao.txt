@@ -284,6 +284,7 @@ Trên bản đồ nhỏ 32×32, thời gian tính toán của tất cả các he
 Vì lý do này, Octile được chọn làm heuristic mặc định trong tất cả các thử nghiệm và được sử dụng trong bộ giải TSP để tính ma trận khoảng cách.
 [Hình 3.3: Bảng so sánh hiệu năng Heuristic trực quan trên giao diện Web Dashboard. Mỗi heuristic hiển thị chi phí đường đi, số nút đã mở rộng và thanh biểu đồ màu gradient để so sánh trực quan. Nguồn: web_heuristics_comparison.png]
 [Hình 3.4: Biểu đồ cột học thuật so sánh số lượng ô lưới cần duyệt giữa 4 heuristic (Manhattan, Euclidean, Octile, Dijkstra) trên bản đồ lưới 32×32. Nguồn: heuristics_nodes_expanded.png]
+[Hình 3.4b: Bảng kết quả thực nghiệm đo lường hiệu năng của các hàm Heuristic trên bản đồ thành phố Berlin (256x256). Nguồn: table_performance.png]
 3.4. Thử nghiệm 3: Ảnh hưởng Tắc nghẽn Giao thông
 3.4.1. Kịch bản giờ thấp điểm
            Thử nghiệm này so sánh lộ trình được A* tìm ra trong hai khung giờ tương phản nhau: giờ thấp điểm (00:00 — đêm khuya) và giờ cao điểm sáng (08:00 — giờ đi làm).
@@ -298,6 +299,7 @@ Kết quả quan sát cho thấy A* đã chọn phương án B — đường đi
 3.4.3. Phân tích sự thay đổi lộ trình
            Thử nghiệm này minh chứng rõ ràng một trong những điểm mạnh then chốt của hệ thống: khả năng phản ứng động với điều kiện giao thông thay đổi theo thời gian. Không giống các hệ thống tìm đường tĩnh chỉ dựa vào khoảng cách Euclidean, hệ thống của nhóm tính toán chi phí di chuyển thực tế có tính đến tắc nghẽn, từ đó đưa ra các quyết định định tuyến thông minh hơn và phù hợp với thực tế vận chuyển đô thị.
 Kết quả thử nghiệm cũng cho thấy rằng trong giờ cao điểm, tổng chi phí của lộ trình né kẹt xe (đường dài hơn về hình học) thường nhỏ hơn tổng chi phí của lộ trình đi thẳng qua vùng tắc nghẽn (đường ngắn hơn về hình học nhưng tốn chi phí cao vì kẹt xe), chứng tỏ chiến lược né tắc nghẽn là hoàn toàn hợp lý và hiệu quả.
+[Hình 3.7b: Bảng so sánh chi phí lộ trình và tỷ lệ phần trăm cải thiện hiệu quả của phương án né kẹt xe qua các khung giờ cao điểm khác nhau. Nguồn: table_traffic.png]
 3.5. Thử nghiệm 4: Giả lập A* Animation
            Thử nghiệm này không đo lường hiệu năng mà tập trung vào việc trực quan hóa quá trình tìm kiếm của thuật toán A*. Khi người dùng nhấn nút "Chạy giả lập A*", hệ thống chạy A* từ Depot đến điểm giao hàng đầu tiên và ghi lại danh sách các nút đã mở rộng theo thứ tự thời gian.
 Sau đó, một bộ đếm tiến độ (animatingIndex) tăng dần theo mỗi khung hình animation, và canvas vẽ lại toàn bộ các nút đã được thăm từ 0 đến animatingIndex bằng màu xanh ngọc trong suốt (rgba(0, 210, 255, 0.35)). Kết quả tạo ra hiệu ứng sóng loang màu xanh lan dần từ Depot ra xung quanh, trực quan hóa cách A* dần dần "khám phá" không gian bản đồ theo hướng về phía đích.
