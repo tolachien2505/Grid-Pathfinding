@@ -103,6 +103,4 @@ BTL/
 
 ---
 
-## 📄 Bản quyền
 
-Dự án này được phát hành theo giấy phép **MIT License**.
